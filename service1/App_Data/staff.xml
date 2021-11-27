@@ -1,7 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Users>
-	<User>
-		<username>Mayank</username>
-		<password>ERUQylpr/gLEnw8vuBn6xA==</password>
-	</User>
+  <User>
+    <username>Mayank</username>
+    <password>ERUQylpr/gLEnw8vuBn6xA==</password>
+  </User>
+  <User>
+    <username>MayankG</username>
+    <password>mayankg</password>
+  </User>
 </Users>

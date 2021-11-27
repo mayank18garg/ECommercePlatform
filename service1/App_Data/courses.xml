@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Courses>
+  <Course>
+    <CourseName>Distributed software development</CourseName>
+    <CourseCode>CSE 445</CourseCode>
+    <CourseLoc>COOR Hall 112</CourseLoc>
+    <RegisteredStudents>
+      <StudentId>1</StudentId>
+      <StudentId>2</StudentId>
+      <StudentId>3</StudentId>
+    </RegisteredStudents>
+  </Course>
+  <Course>
+    <CourseName>Distributed Database Systems</CourseName>
+    <CourseCode>CSE 512</CourseCode>
+    <CourseLoc>Armstrong hall 101</CourseLoc>
+    <RegisteredStudents />
+  </Course>
+  <Course>
+    <CourseName>Mobile Computing</CourseName>
+    <CourseCode>CSE 535</CourseCode>
+    <CourseLoc>Hayden 205</CourseLoc>
+    <RegisteredStudents />
+  </Course>
+</Courses>

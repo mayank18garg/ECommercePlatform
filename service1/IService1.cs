@@ -19,6 +19,9 @@ namespace service1
         [OperationContract]
         string searchUser(string User, string password, int role);
 
+        [OperationContract]
+        string addCourse(string courseName, string courseCode, string location);
+
     }
     
 }

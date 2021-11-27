@@ -142,6 +142,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Member\CoursePage.aspx" />
     <Content Include="Member\MemberLogin.aspx" />
     <Content Include="Member\MemberPage.aspx" />
     <Content Include="Member\MemberRegister.aspx" />
@@ -213,6 +214,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Member\CoursePage.aspx.cs">
+      <DependentUpon>CoursePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\CoursePage.aspx.designer.cs">
+      <DependentUpon>CoursePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member\MemberLogin.aspx.cs">
       <DependentUpon>MemberLogin.aspx</DependentUpon>

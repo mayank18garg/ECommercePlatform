@@ -97,5 +97,53 @@ namespace service1
                 }
             }
         }
+    
+    
+        public string addCourse(string courseName,string courseCode,string location) {
+            string filename = "courses.xml";
+
+            string p = HostingEnvironment.ApplicationPhysicalPath;
+            string filePath = Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, "App_Data", filename);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filePath);
+
+            XmlNode course_node = doc.CreateElement("Course");
+            XmlNodeList courselst = doc.SelectNodes("Courses/Course/CourseCode");
+            foreach (XmlNode res in courselst)
+            {
+                Console.WriteLine(res.InnerText);
+                if (res.InnerText == courseCode)
+                {
+                    return "exist";
+                }
+            }
+
+            XmlNode cname = doc.CreateElement("CourseName");
+            cname.InnerText = courseName;   // add value to it
+            course_node.AppendChild(cname);      //add to parent node
+
+            XmlNode ccode = doc.CreateElement("CourseCode");
+            ccode.InnerText = courseCode;   // add value to it
+            course_node.AppendChild(ccode);      //add to parent node
+
+            XmlNode cloc = doc.CreateElement("CourseLoc");
+            cloc.InnerText = location;   // add value to it
+            course_node.AppendChild(cloc);      //add to parent node
+
+            XmlNode students = doc.CreateElement("RegisteredStudents");
+            //cloc.InnerText = location;   // add value to it
+            course_node.AppendChild(students);      //add to parent node
+
+            doc.DocumentElement.AppendChild(course_node);
+
+            doc.Save(filePath);
+
+
+            return "success";
+
+
+        }
+
     }
 }

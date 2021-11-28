@@ -13,12 +13,17 @@
       "StudentCourses": []
     },
     {
-      "StudentName": "Mayank",
-      "Password": "97100109105110",
+      "StudentName": "May",
+      "Password": "jj",
       "StudentCourses": [
         "CSE 498",
         "CSE 598"
       ]
+    },
+    {
+      "StudentName": "Tanmay1",
+      "Password": "tj7",
+      "StudentCourses": []
     }
   ]
 }

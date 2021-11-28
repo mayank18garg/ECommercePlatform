@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:54222/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:54222/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54222/Service1.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_addUser_InputMessage">
@@ -36,6 +37,18 @@
   <wsdl:message name="IService1_deleteCourse_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteCourseResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_viewCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:viewCourses" />
+  </wsdl:message>
+  <wsdl:message name="IService1_viewCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:viewCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_createAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:createAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_createAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createAccountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="addUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addUser" message="tns:IService1_addUser_InputMessage" />
@@ -56,6 +69,14 @@
     <wsdl:operation name="deleteCourse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteCourse" message="tns:IService1_deleteCourse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteCourseResponse" message="tns:IService1_deleteCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="viewCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/viewCourses" message="tns:IService1_viewCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/viewCoursesResponse" message="tns:IService1_viewCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/createAccount" message="tns:IService1_createAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/createAccountResponse" message="tns:IService1_createAccount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -98,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="deleteCourse">
       <soap:operation soapAction="http://tempuri.org/IService1/deleteCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewCourses">
+      <soap:operation soapAction="http://tempuri.org/IService1/viewCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/createAccount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

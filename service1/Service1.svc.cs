@@ -197,8 +197,6 @@ namespace service1
             return ans;
         }
 
-
-
         public string deleteCourse(string Code)
         {
             CourseRootObject courseObj = new CourseRootObject();
@@ -269,7 +267,82 @@ namespace service1
             return "Course not found";
         }
 
+        public List<string> viewCourses(string username)
+        {
+            string usersPath = HttpRuntime.AppDomainAppPath + "\\users_list.json";
+            List<User> usersList = new List<User>();
+            UsersRootObject usersObj = new UsersRootObject(); // Object of user
+            string jsonUserData = File.ReadAllText(usersPath);
+            //string jsonUser;
 
+            List<string> courses = new List<string>();
+
+            usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData);
+            usersList = usersObj.users.ToList<User>();
+
+            foreach (User user in usersList)
+            {
+                if (user.StudentName == username)
+                {
+                    foreach(string course in user.StudentCourses)
+                    {
+                        courses.Add(course);
+                    }
+                    return courses;
+                }
+            }
+            return null;
+        }
+
+        public string createAccount(string StudentName, string password)
+        {
+            User newUser = new User(); // User object for new user
+            UsersRootObject usersObj = new UsersRootObject(); // Object of user
+            List<User> usersList = new List<User>(); // List of users to read in existing data and add new users
+            string json; // for the final JSON formatted list of users
+            Boolean exists = false; // boolean value to check if the StudentName exists
+
+            string path = HttpRuntime.AppDomainAppPath + "\\users_list.json"; // File path to user credentials
+
+            try
+            {
+                string jsonData = File.ReadAllText(path); // reads in the JSON file into a string
+
+                usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonData); // transfers jsonData to the usersObj
+
+                if (usersObj.users != null) // makes sure that there is at least one existing user to iterate through accounts
+                {
+                    usersList = usersObj.users.ToList<User>(); // transfers users to a List<User>
+
+                    foreach (User user in usersList) // iterates through the users
+                    {
+                        if (user.StudentName == StudentName) // checks if the StudentName already exists
+                        {
+                            exists = true;
+                        }
+                    }
+                }
+
+                if (!exists) // If StudentName doesn't already exist
+                {
+                    newUser.StudentName = StudentName;
+                    newUser.Password = password;
+                    newUser.StudentCourses = new List<string>();
+
+                    //newUser.StudentCourses = new string[];
+                    usersList.Add(newUser); // adds the new user to the user list
+
+                    usersObj.users = usersList.ToArray<User>(); // Converts the list to a User object array
+                    json = JsonConvert.SerializeObject(usersObj, Newtonsoft.Json.Formatting.Indented); // Converts object to JSON string
+                    File.WriteAllText(path, json); // Writes JSON data to the file
+                }
+            }
+            finally
+            {
+
+            }
+            return "success";
+        }
 
         public class Course
         {

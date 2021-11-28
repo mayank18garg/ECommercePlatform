@@ -6,4 +6,7 @@
         <asp:Label ID="Label1" runat="server" Text="Hello! In User's World!"></asp:Label></h1> <br>
         <asp:Image ID="Image1" runat="server" />
 
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="View My Courses" />
 </asp:Content>

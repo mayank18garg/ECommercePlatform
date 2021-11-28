@@ -27,6 +27,12 @@
       "Name": "Cloud Computing",
       "seats": 70,
       "CourseStudents": []
+    },
+    {
+      "Code": "CSE 542",
+      "Name": "dbmsi",
+      "seats": 60,
+      "CourseStudents": []
     }
   ]
 }

@@ -12,16 +12,17 @@ namespace FinalProject.Member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "Hello, " + Session["username"].ToString() ;
+            Label1.Text = "Hello, " + Session["username"] ;
             FinalProject.ServiceReference2.ServiceClient client = new FinalProject.ServiceReference2.ServiceClient();
             string mystr = client.GetVerifierString("5");
             Stream img = client.GetImage(mystr);
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+
+        protected void Button1_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("CoursePage.aspx");
+            Response.Redirect("ViewCourses.aspx");
         }
     }
 }

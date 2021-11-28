@@ -13,9 +13,9 @@ namespace FinalProject.Member
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "Hello, " + Session["username"] ;
-            FinalProject.ServiceReference2.ServiceClient client = new FinalProject.ServiceReference2.ServiceClient();
+            /*FinalProject.ServiceReference1.ServiceClient client = new FinalProject.ServiceReference1.ServiceClient();
             string mystr = client.GetVerifierString("5");
-            Stream img = client.GetImage(mystr);
+            Stream img = client.GetImage(mystr);*/
 
         }
 

@@ -12,7 +12,7 @@ namespace FinalProject.Member
         protected void Page_Load(object sender, EventArgs e)
         {
             FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
-            string[] response = client.viewCourses(Session["username"].ToString());
+            string[] response = client.viewMyCourses(Session["username"].ToString());
 
             foreach(var i in response)
             {

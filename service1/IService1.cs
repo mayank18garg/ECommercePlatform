@@ -30,8 +30,11 @@ namespace service1
         string deleteCourse(string Code);
 
         [OperationContract]
-        List<string> viewCourses(string username);
+        List<string> viewMyCourses(string username);
 
+        [OperationContract]
+        List<string> viewAllCourses(string username);
+         
         [OperationContract]
         string createAccount(string StudentName, string password);
 

@@ -26,11 +26,13 @@ namespace FinalProject
         protected void MemberPage_Click(object sender, EventArgs e)
         {
             HttpCookie myCookies = Request.Cookies["MemberCookieId"];
-            if ((myCookies == null) || (Session["role"].ToString() != "2")) 
+            //if ((myCookies == null) || (Session["role"].ToString() != "2")) 
+            if(myCookies == null || myCookies["role"].ToString() != "2")
             {
                 Response.Redirect("Member/MemberLogin.aspx");
             }
-            else if ((Session["role"].ToString() == "2"))
+            //else if ((Session["role"].ToString() == "2"))
+            else
             {
                 Response.Redirect("Member/MemberPage.aspx");
             }
@@ -44,11 +46,13 @@ namespace FinalProject
         protected void StaffPage_Click(object sender, EventArgs e)
         {
             HttpCookie myCookies = Request.Cookies["StaffCookieId"];
-            if(myCookies == null || Session["role"].ToString() != "3")
+            //if(myCookies == null || Session["role"].ToString() != "3")
+            if(myCookies == null || myCookies["role"].ToString() != "3")
             {
                 Response.Redirect("Staff/StaffLogin.aspx");
             }
-            else if(Session["role"].ToString() == "3")
+            //else if(Session["role"].ToString() == "3")
+            else
             {
                 Response.Redirect("Staff/StaffPage.aspx");
             }

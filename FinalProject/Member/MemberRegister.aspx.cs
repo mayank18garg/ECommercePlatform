@@ -18,18 +18,23 @@ public partial class MemberRegister : System.Web.UI.Page
     {
            
         FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
-        string response = client.addUser(UserInput.Text, PasswordInput.Text, 2);
-        if (response.Equals("success"))
+        if (!Session["generatedString"].Equals(textInput1.Text))    // Comparing input string and random string
         {
-            //  Error.Text = "User has been registered Successfully!";
-            Session["registration"] = "success";
-            Response.Redirect("MemberLogin.aspx");
+            Error.Text = "The string entered is incorrect so please try again!";
         }
-        else if (response.Equals("exist"))
-        {
-            Error.Text = "Username already exist! Provide a new username";
+        else {
+            string response = client.addUser(UserInput.Text, PasswordInput.Text, 2);
+            if (response.Equals("success"))
+            {
+                //  Error.Text = "User has been registered Successfully!";
+                Session["registration"] = "success";
+                Response.Redirect("MemberLogin.aspx");
+            }
+            else if (response.Equals("exist"))
+            {
+                Error.Text = "Username already exist! Provide a new username";
+            }
         }
-            
     }
 }
 

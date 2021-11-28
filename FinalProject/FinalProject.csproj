@@ -238,20 +238,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Member\imageProcess.aspx.cs">
-      <DependentUpon>imageProcess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member\imageProcess.aspx.designer.cs">
-      <DependentUpon>imageProcess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Member\ImgVerifierRegister.ascx.cs">
-      <DependentUpon>ImgVerifierRegister.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member\ImgVerifierRegister.ascx.designer.cs">
-      <DependentUpon>ImgVerifierRegister.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Member\MemberLogin.aspx.cs">
       <DependentUpon>MemberLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

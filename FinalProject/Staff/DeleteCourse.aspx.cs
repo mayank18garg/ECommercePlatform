@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace FinalProject.Staff
 {
-    public partial class StaffPage : System.Web.UI.Page
+    public partial class DeleteCourse : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,12 +16,10 @@ namespace FinalProject.Staff
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AddCourse.aspx");
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("DeleteCourse.aspx");
+            FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
+            string courseCode = TextBox1.Text.ToUpper();
+            string response = client.deleteCourse(courseCode);
+            Label1.Text = response;
         }
     }
 }

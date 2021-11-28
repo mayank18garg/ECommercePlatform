@@ -11,7 +11,7 @@
         Enter subject code:<asp:TextBox ID="TextBox2" runat="server" Width="408px"></asp:TextBox>
     </p>
     <p>
-        Enter subject location:<asp:TextBox ID="TextBox3" runat="server" Width="390px"></asp:TextBox>
+        Enter number of seats:<asp:TextBox ID="TextBox3" runat="server" Width="390px"></asp:TextBox>
     </p>
     <p>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Course to Database" />

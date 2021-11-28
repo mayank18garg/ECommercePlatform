@@ -105,7 +105,7 @@ namespace service1
         }
 
 
-        public string addCourse(string Code, string Name, Int32 seats)
+        public string addCourse(string Name, string Code, Int32 seats)
         {
             Course newCourse = new Course();
             CourseRootObject courseObj = new CourseRootObject();
@@ -148,7 +148,7 @@ namespace service1
             return created;
         }
 
-        public string Registercourse(string courseCode, string userName)
+        public string registercourse(string courseCode, string userName)
         {
             List<Course> coursesList = new List<Course>();
             CourseRootObject courseObj = new CourseRootObject();
@@ -198,6 +198,76 @@ namespace service1
         }
 
 
+
+        public string deleteCourse(string Code)
+        {
+            CourseRootObject courseObj = new CourseRootObject();
+            List<Course> coursesList = new List<Course>();
+            string json;
+            Boolean exists = false;
+
+            string coursesPath = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
+            string usersPath = HttpRuntime.AppDomainAppPath + "\\users_list.json";
+
+            string jsonData = File.ReadAllText(coursesPath);
+
+            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
+
+            if (courseObj.courses != null)
+            {
+                coursesList = courseObj.courses.ToList<Course>();
+                foreach (Course course in coursesList)
+                {
+                    if (course.Code == Code)
+                    {
+                        exists = true;
+                    }
+                }
+            }
+
+            if (exists)
+            {
+                var itemToRemove = coursesList.SingleOrDefault(r => r.Code == Code);
+                if (itemToRemove != null)
+                {
+
+                    List<User> usersList = new List<User>();
+                    UsersRootObject usersObj = new UsersRootObject(); // Object of user
+
+                    string jsonUserData = File.ReadAllText(usersPath);
+                    string jsonUser;
+
+                    usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData);
+
+                    usersList = usersObj.users.ToList<User>();
+                    foreach (var i in itemToRemove.CourseStudents)
+                    {
+                        foreach (User user in usersList)
+                        {
+                            if (user.StudentName == i)
+                            {
+                                int index = user.StudentCourses.IndexOf(Code);
+                                if (index != -1)
+                                {
+                                    user.StudentCourses.RemoveAt(index);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    usersObj.users = usersList.ToArray<User>(); // Converts the list to a User object array
+                    jsonUser = JsonConvert.SerializeObject(usersObj, Formatting.Indented); // Converts object to JSON string
+                    File.WriteAllText(usersPath, jsonUser); // Writes JSON data to the file
+
+                    coursesList.Remove(itemToRemove);
+                    courseObj.courses = coursesList.ToArray<Course>(); // Converts the list to a User object array
+                    json = JsonConvert.SerializeObject(courseObj, Formatting.Indented); // Converts object to JSON string
+                    File.WriteAllText(coursesPath, json); // Writes JSON data to the file
+                    return "Course Removed successfully";
+                }
+            }
+            return "Course not found";
+        }
 
 
 

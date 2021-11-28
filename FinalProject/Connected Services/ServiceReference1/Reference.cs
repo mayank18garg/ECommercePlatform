@@ -28,10 +28,22 @@ namespace FinalProject.ServiceReference1 {
         System.Threading.Tasks.Task<string> searchUserAsync(string User, string password, int role);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addCourse", ReplyAction="http://tempuri.org/IService1/addCourseResponse")]
-        string addCourse(string courseName, string courseCode, string location);
+        string addCourse(string Name, string Code, int seats);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addCourse", ReplyAction="http://tempuri.org/IService1/addCourseResponse")]
-        System.Threading.Tasks.Task<string> addCourseAsync(string courseName, string courseCode, string location);
+        System.Threading.Tasks.Task<string> addCourseAsync(string Name, string Code, int seats);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registercourse", ReplyAction="http://tempuri.org/IService1/registercourseResponse")]
+        string registercourse(string courseCode, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/registercourse", ReplyAction="http://tempuri.org/IService1/registercourseResponse")]
+        System.Threading.Tasks.Task<string> registercourseAsync(string courseCode, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteCourse", ReplyAction="http://tempuri.org/IService1/deleteCourseResponse")]
+        string deleteCourse(string Code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteCourse", ReplyAction="http://tempuri.org/IService1/deleteCourseResponse")]
+        System.Threading.Tasks.Task<string> deleteCourseAsync(string Code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,12 +89,28 @@ namespace FinalProject.ServiceReference1 {
             return base.Channel.searchUserAsync(User, password, role);
         }
         
-        public string addCourse(string courseName, string courseCode, string location) {
-            return base.Channel.addCourse(courseName, courseCode, location);
+        public string addCourse(string Name, string Code, int seats) {
+            return base.Channel.addCourse(Name, Code, seats);
         }
         
-        public System.Threading.Tasks.Task<string> addCourseAsync(string courseName, string courseCode, string location) {
-            return base.Channel.addCourseAsync(courseName, courseCode, location);
+        public System.Threading.Tasks.Task<string> addCourseAsync(string Name, string Code, int seats) {
+            return base.Channel.addCourseAsync(Name, Code, seats);
+        }
+        
+        public string registercourse(string courseCode, string userName) {
+            return base.Channel.registercourse(courseCode, userName);
+        }
+        
+        public System.Threading.Tasks.Task<string> registercourseAsync(string courseCode, string userName) {
+            return base.Channel.registercourseAsync(courseCode, userName);
+        }
+        
+        public string deleteCourse(string Code) {
+            return base.Channel.deleteCourse(Code);
+        }
+        
+        public System.Threading.Tasks.Task<string> deleteCourseAsync(string Code) {
+            return base.Channel.deleteCourseAsync(Code);
         }
     }
 }

@@ -7,6 +7,26 @@
       "CourseStudents": [
         "Tanmay"
       ]
+    },
+    {
+      "Code": "CSE 598",
+      "Name": "ML",
+      "seats": 79,
+      "CourseStudents": [
+        "Mayank"
+      ]
+    },
+    {
+      "Code": "CSE 535",
+      "Name": "Mobile Computing",
+      "seats": 120,
+      "CourseStudents": []
+    },
+    {
+      "Code": "CSE 540",
+      "Name": "Cloud Computing",
+      "seats": 70,
+      "CourseStudents": []
     }
   ]
 }

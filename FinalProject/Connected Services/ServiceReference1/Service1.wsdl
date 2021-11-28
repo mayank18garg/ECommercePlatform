@@ -24,6 +24,18 @@
   <wsdl:message name="IService1_addCourse_OutputMessage">
     <wsdl:part name="parameters" element="tns:addCourseResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_registercourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:registercourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_registercourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:registercourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCourse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_deleteCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCourseResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="addUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addUser" message="tns:IService1_addUser_InputMessage" />
@@ -36,6 +48,14 @@
     <wsdl:operation name="addCourse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addCourse" message="tns:IService1_addCourse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/addCourseResponse" message="tns:IService1_addCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="registercourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/registercourse" message="tns:IService1_registercourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/registercourseResponse" message="tns:IService1_registercourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteCourse" message="tns:IService1_deleteCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteCourseResponse" message="tns:IService1_deleteCourse_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -60,6 +80,24 @@
     </wsdl:operation>
     <wsdl:operation name="addCourse">
       <soap:operation soapAction="http://tempuri.org/IService1/addCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registercourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/registercourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCourse">
+      <soap:operation soapAction="http://tempuri.org/IService1/deleteCourse" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

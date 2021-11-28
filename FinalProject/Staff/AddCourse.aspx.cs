@@ -19,9 +19,9 @@ namespace FinalProject.Staff
             FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
             string courseName = TextBox1.Text.ToString();
             string courseCode = TextBox2.Text.ToString();
-            string location = TextBox3.Text.ToString();
+            int seats = Int32.Parse(TextBox3.Text.ToString());
 
-            string response = client.addCourse(courseName, courseCode, location);
+            string response = client.addCourse(courseName, courseCode, seats);
             if(response == "exist")
             {
                 Label1.Text = "Course Already Exists. Please add a different course.";

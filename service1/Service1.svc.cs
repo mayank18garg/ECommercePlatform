@@ -267,7 +267,7 @@ namespace service1
             return "Course not found";
         }
 
-        public List<string> viewMyCourses(string username)
+        public List<string> viewCourses(string username)
         {
             string usersPath = HttpRuntime.AppDomainAppPath + "\\users_list.json";
             List<User> usersList = new List<User>();
@@ -290,30 +290,6 @@ namespace service1
                     }
                     return courses;
                 }
-            }
-            return null;
-        }
-
-        public List<string> viewAllCourses(string username)
-        {
-            string usersPath = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
-            CourseRootObject courseObj = new CourseRootObject();
-            List<Course> coursesList = new List<Course>();
-            string jsonCourseData = File.ReadAllText(usersPath);
-            //string jsonUser;
-
-            List<string> courses = new List<string>();
-
-            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonCourseData);
-
-            if (courseObj.courses != null)
-            {
-                coursesList = courseObj.courses.ToList<Course>();
-                foreach (Course course in coursesList)
-                {
-                    courses.Add(course.Name);
-                }
-                return courses;
             }
             return null;
         }

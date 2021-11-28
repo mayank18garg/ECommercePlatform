@@ -37,17 +37,11 @@
   <wsdl:message name="IService1_deleteCourse_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteCourseResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_viewMyCourses_InputMessage">
-    <wsdl:part name="parameters" element="tns:viewMyCourses" />
+  <wsdl:message name="IService1_viewCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:viewCourses" />
   </wsdl:message>
-  <wsdl:message name="IService1_viewMyCourses_OutputMessage">
-    <wsdl:part name="parameters" element="tns:viewMyCoursesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_viewAllCourses_InputMessage">
-    <wsdl:part name="parameters" element="tns:viewAllCourses" />
-  </wsdl:message>
-  <wsdl:message name="IService1_viewAllCourses_OutputMessage">
-    <wsdl:part name="parameters" element="tns:viewAllCoursesResponse" />
+  <wsdl:message name="IService1_viewCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:viewCoursesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_createAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:createAccount" />
@@ -76,13 +70,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/deleteCourse" message="tns:IService1_deleteCourse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/deleteCourseResponse" message="tns:IService1_deleteCourse_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="viewMyCourses">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/viewMyCourses" message="tns:IService1_viewMyCourses_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/viewMyCoursesResponse" message="tns:IService1_viewMyCourses_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="viewAllCourses">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/viewAllCourses" message="tns:IService1_viewAllCourses_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/viewAllCoursesResponse" message="tns:IService1_viewAllCourses_OutputMessage" />
+    <wsdl:operation name="viewCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/viewCourses" message="tns:IService1_viewCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/viewCoursesResponse" message="tns:IService1_viewCourses_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="createAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/createAccount" message="tns:IService1_createAccount_InputMessage" />
@@ -136,17 +126,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="viewMyCourses">
-      <soap:operation soapAction="http://tempuri.org/IService1/viewMyCourses" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="viewAllCourses">
-      <soap:operation soapAction="http://tempuri.org/IService1/viewAllCourses" style="document" />
+    <wsdl:operation name="viewCourses">
+      <soap:operation soapAction="http://tempuri.org/IService1/viewCourses" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

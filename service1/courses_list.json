@@ -1,0 +1,12 @@
+{
+  "courses": [
+    {
+      "Code": "CSE 445",
+      "Name": "DBMSI",
+      "seats": 99,
+      "CourseStudents": [
+        "Tanmay"
+      ]
+    }
+  ]
+}

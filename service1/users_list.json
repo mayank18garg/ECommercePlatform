@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "StudentName": "Tanmay",
+      "Password": "97100109105110",
+      "StudentCourses": [
+        "CSE 445"
+      ]
+    },
+    {
+      "StudentName": "Nakul",
+      "Password": "97100109105110",
+      "StudentCourses": []
+    },
+    {
+      "StudentName": "Mayank",
+      "Password": "97100109105110",
+      "StudentCourses": [
+        "CSE498"
+      ]
+    }
+  ]
+}

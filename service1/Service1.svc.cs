@@ -11,6 +11,9 @@ using System.Xml;
 using System.Net;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using System.Web;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace service1
 {
@@ -100,52 +103,128 @@ namespace service1
                 }
             }
         }
-    
-    
-        public string addCourse(string courseName,string courseCode,string location) {
-            string filename = "courses.xml";
 
-            string p = HostingEnvironment.ApplicationPhysicalPath;
-            string filePath = Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, "App_Data", filename);
 
-            XmlDocument doc = new XmlDocument();
-            doc.Load(filePath);
+        public string addCourse(string Code, string Name, Int32 seats)
+        {
+            Course newCourse = new Course();
+            CourseRootObject courseObj = new CourseRootObject();
+            List<Course> coursesList = new List<Course>();
+            string json;
+            Boolean exists = false;
+            string created = "";
 
-            XmlNode course_node = doc.CreateElement("Course");
-            XmlNodeList courselst = doc.SelectNodes("Courses/Course/CourseCode");
-            foreach (XmlNode res in courselst)
+            string path = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
+
+            string jsonData = File.ReadAllText(path);
+
+            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
+
+            if (courseObj.courses != null)
             {
-                Console.WriteLine(res.InnerText);
-                if (res.InnerText == courseCode)
+                coursesList = courseObj.courses.ToList<Course>();
+                foreach (Course course in coursesList)
                 {
-                    return "exist";
+                    if (course.Code == Code)
+                    {
+                        exists = true;
+                        return "exist";
+                    }
                 }
             }
 
-            XmlNode cname = doc.CreateElement("CourseName");
-            cname.InnerText = courseName;   // add value to it
-            course_node.AppendChild(cname);      //add to parent node
+            if (!exists)
+            {
+                newCourse.Code = Code; newCourse.Name = Name; newCourse.seats = seats;
+                newCourse.CourseStudents = new List<string>();
+                coursesList.Add(newCourse);
 
-            XmlNode ccode = doc.CreateElement("CourseCode");
-            ccode.InnerText = courseCode;   // add value to it
-            course_node.AppendChild(ccode);      //add to parent node
+                courseObj.courses = coursesList.ToArray<Course>();
+                json = JsonConvert.SerializeObject(courseObj, Formatting.Indented);
+                File.WriteAllText(path, json);
 
-            XmlNode cloc = doc.CreateElement("CourseLoc");
-            cloc.InnerText = location;   // add value to it
-            course_node.AppendChild(cloc);      //add to parent node
+                created = "created";
+            }
+            return created;
+        }
 
-            XmlNode students = doc.CreateElement("RegisteredStudents");
-            //cloc.InnerText = location;   // add value to it
-            course_node.AppendChild(students);      //add to parent node
+        public string Registercourse(string courseCode, string userName)
+        {
+            List<Course> coursesList = new List<Course>();
+            CourseRootObject courseObj = new CourseRootObject();
+            string path = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
 
-            doc.DocumentElement.AppendChild(course_node);
+            //user
+            string userpath = HttpRuntime.AppDomainAppPath + "\\users_list.json"; // File path to user credentials 
+            string jsonUserData = File.ReadAllText(userpath); // reads in the JSON file into a string
 
-            doc.Save(filePath);
+            User newUser = new User(); // User object for new user
+            UsersRootObject usersObj = new UsersRootObject(); // Object of user
+            List<User> usersList = new List<User>(); // List of users to read in existing data and add new users
+
+            usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData); // transfers jsonData to the usersObj
+            usersList = usersObj.users.ToList<User>();
+            //user
+            string jsonData = File.ReadAllText(path);
+            string json;
+
+            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
+            coursesList = courseObj.courses.ToList<Course>();
+            foreach (Course course in coursesList)
+            {
+                if (course.Code == courseCode)
+                {
+                    course.seats = course.seats - 1;
+                    course.CourseStudents.Add(userName);
+                    courseObj.courses = coursesList.ToArray<Course>();
+                    json = JsonConvert.SerializeObject(courseObj, Formatting.Indented);
+                    File.WriteAllText(path, json);
+
+                    var itemToAdd = usersList.SingleOrDefault(r => r.StudentName == userName);
+                    if (itemToAdd != null)
+                    {
+                        itemToAdd.StudentCourses.Add(course.Code);
+                    }
+
+                }
+
+            }
+            usersObj.users = usersList.ToArray<User>(); // Converts the list to a User object array
+            json = JsonConvert.SerializeObject(usersObj, Formatting.Indented); // Converts object to JSON string
+            File.WriteAllText(userpath, json); // Writes JSON data to the file
+
+            string ans = string.Format("Course {0} has been registered for user {1}", courseCode, userName);
+            return ans;
+        }
 
 
-            return "success";
 
 
+
+        public class Course
+        {
+            public string Code { get; set; }
+            public string Name { get; set; }
+            public Int32 seats { get; set; }
+            public List<string> CourseStudents { get; set; }
+        }
+
+        public class CourseRootObject
+        {
+            public Course[] courses { get; set; }
+        }
+
+        public class UsersRootObject
+        {
+            public User[] users { get; set; } // Array of users
+        }
+
+        // User class object
+        public class User
+        {
+            public string StudentName { get; set; }
+            public string Password { get; set; }
+            public List<string> StudentCourses { get; set; }
         }
 
     }

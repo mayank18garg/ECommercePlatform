@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProject", "FinalProjec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service1", "service1\service1.csproj", "{208341BC-0B0D-4DA0-ABDB-D698E710AF3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryDLL", "ClassLibraryDLL\ClassLibraryDLL.csproj", "{CE2D1E8F-3CA0-455B-8F75-D26795058909}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{208341BC-0B0D-4DA0-ABDB-D698E710AF3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{208341BC-0B0D-4DA0-ABDB-D698E710AF3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{208341BC-0B0D-4DA0-ABDB-D698E710AF3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2D1E8F-3CA0-455B-8F75-D26795058909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2D1E8F-3CA0-455B-8F75-D26795058909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2D1E8F-3CA0-455B-8F75-D26795058909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2D1E8F-3CA0-455B-8F75-D26795058909}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

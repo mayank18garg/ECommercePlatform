@@ -73,7 +73,7 @@ namespace service1
                         string sname;
                         sname = reader.ReadString();
                         if(sname == User)
-                        {
+                        { 
                             reader.Read();
                             if((reader.NodeType == XmlNodeType.Element) && (reader.Name == "password"))
                             {

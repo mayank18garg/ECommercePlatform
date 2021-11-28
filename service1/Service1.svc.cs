@@ -8,6 +8,9 @@ using System.Text;
 using System.Web.Hosting;
 using System.IO;
 using System.Xml;
+using System.Net;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace service1
 {

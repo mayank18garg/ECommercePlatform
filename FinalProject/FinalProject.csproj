@@ -109,6 +109,20 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="App_Data\members.xml" />
+    <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
+    <None Include="Connected Services\ServiceReference1\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference2\Service.disco" />
+    <None Include="Connected Services\ServiceReference2\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference2\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReference2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
@@ -134,15 +148,19 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
-    <None Include="Connected Services\ServiceReference1\Service1.xsd">
+    <None Include="Connected Services\ServiceReference2\Service.wsdl" />
+    <None Include="Connected Services\ServiceReference2\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference1\Service11.xsd">
+    <None Include="Connected Services\ServiceReference2\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference2\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Member\CoursePage.aspx" />
+    <Content Include="Member\imageProcess.aspx" />
+    <Content Include="Member\ImgVerifierRegister.ascx" />
     <Content Include="Member\MemberLogin.aspx" />
     <Content Include="Member\MemberPage.aspx" />
     <Content Include="Member\MemberRegister.aspx" />
@@ -175,6 +193,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Staff\AddCourse.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
     <Content Include="Staff\StaffPage.aspx" />
     <Content Include="Staff\StaffRegister.aspx" />
@@ -198,6 +217,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceReference2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,13 +238,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Member\CoursePage.aspx.cs">
-      <DependentUpon>CoursePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Member\CoursePage.aspx.designer.cs">
-      <DependentUpon>CoursePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member\MemberLogin.aspx.cs">
       <DependentUpon>MemberLogin.aspx</DependentUpon>
@@ -258,6 +275,13 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Staff\AddCourse.aspx.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\AddCourse.aspx.designer.cs">
+      <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\StaffLogin.aspx.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -288,9 +312,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -303,6 +324,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference2\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

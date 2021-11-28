@@ -22,4 +22,10 @@
     <CourseLoc>Hayden 205</CourseLoc>
     <RegisteredStudents />
   </Course>
+  <Course>
+    <CourseName>DBMSI</CourseName>
+    <CourseCode>CSE 598</CourseCode>
+    <CourseLoc>COOR Hall 221</CourseLoc>
+    <RegisteredStudents />
+  </Course>
 </Courses>

@@ -26,6 +26,12 @@ namespace FinalProject.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/searchUser", ReplyAction="http://tempuri.org/IService1/searchUserResponse")]
         System.Threading.Tasks.Task<string> searchUserAsync(string User, string password, int role);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addCourse", ReplyAction="http://tempuri.org/IService1/addCourseResponse")]
+        string addCourse(string courseName, string courseCode, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addCourse", ReplyAction="http://tempuri.org/IService1/addCourseResponse")]
+        System.Threading.Tasks.Task<string> addCourseAsync(string courseName, string courseCode, string location);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace FinalProject.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> searchUserAsync(string User, string password, int role) {
             return base.Channel.searchUserAsync(User, password, role);
+        }
+        
+        public string addCourse(string courseName, string courseCode, string location) {
+            return base.Channel.addCourse(courseName, courseCode, location);
+        }
+        
+        public System.Threading.Tasks.Task<string> addCourseAsync(string courseName, string courseCode, string location) {
+            return base.Channel.addCourseAsync(courseName, courseCode, location);
         }
     }
 }

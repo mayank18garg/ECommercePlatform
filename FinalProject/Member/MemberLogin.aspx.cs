@@ -34,6 +34,7 @@ namespace FinalProject.Member
                 mycookies["Name"] = UserInput.Text;            // Store username and password in cookies
                 //mycookies["Password"] = Cryption.Encrypt(passsword_input.Text);
                 mycookies["Password"] = PasswordInput.Text;
+                mycookies["role"] = "2";
                 mycookies.Expires = DateTime.Now.AddMonths(6);
                 Response.Cookies.Add(mycookies);
                 Session["username"] = UserInput.Text;   // Storing username is session so that it could be used in welcome page

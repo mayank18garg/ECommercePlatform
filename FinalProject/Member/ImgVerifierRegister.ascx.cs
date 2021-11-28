@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FinalProject.Staff
+namespace FinalProject.Member
 {
-    public partial class StaffPage : System.Web.UI.Page
+    public partial class ImgVerifierRegister : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AddCourse.aspx");
+            Image1.ImageUrl = "imageProcess.aspx";
         }
     }
 }

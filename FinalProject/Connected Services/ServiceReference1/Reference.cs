@@ -45,11 +45,11 @@ namespace FinalProject.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/deleteCourse", ReplyAction="http://tempuri.org/IService1/deleteCourseResponse")]
         System.Threading.Tasks.Task<string> deleteCourseAsync(string Code);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/viewCourses", ReplyAction="http://tempuri.org/IService1/viewCoursesResponse")]
-        string[] viewCourses(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/viewMyCourses", ReplyAction="http://tempuri.org/IService1/viewMyCoursesResponse")]
+        string[] viewMyCourses(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/viewCourses", ReplyAction="http://tempuri.org/IService1/viewCoursesResponse")]
-        System.Threading.Tasks.Task<string[]> viewCoursesAsync(string username);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/viewMyCourses", ReplyAction="http://tempuri.org/IService1/viewMyCoursesResponse")]
+        System.Threading.Tasks.Task<string[]> viewMyCoursesAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/createAccount", ReplyAction="http://tempuri.org/IService1/createAccountResponse")]
         string createAccount(string StudentName, string password);
@@ -125,12 +125,12 @@ namespace FinalProject.ServiceReference1 {
             return base.Channel.deleteCourseAsync(Code);
         }
         
-        public string[] viewCourses(string username) {
-            return base.Channel.viewCourses(username);
+        public string[] viewMyCourses(string username) {
+            return base.Channel.viewMyCourses(username);
         }
         
-        public System.Threading.Tasks.Task<string[]> viewCoursesAsync(string username) {
-            return base.Channel.viewCoursesAsync(username);
+        public System.Threading.Tasks.Task<string[]> viewMyCoursesAsync(string username) {
+            return base.Channel.viewMyCoursesAsync(username);
         }
         
         public string createAccount(string StudentName, string password) {

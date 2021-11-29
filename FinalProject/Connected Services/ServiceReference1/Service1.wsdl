@@ -49,6 +49,12 @@
   <wsdl:message name="IService1_createAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:createAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_viewAllCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:viewAllCourses" />
+  </wsdl:message>
+  <wsdl:message name="IService1_viewAllCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:viewAllCoursesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="addUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/addUser" message="tns:IService1_addUser_InputMessage" />
@@ -77,6 +83,10 @@
     <wsdl:operation name="createAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/createAccount" message="tns:IService1_createAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/createAccountResponse" message="tns:IService1_createAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="viewAllCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/viewAllCourses" message="tns:IService1_viewAllCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/viewAllCoursesResponse" message="tns:IService1_viewAllCourses_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -137,6 +147,15 @@
     </wsdl:operation>
     <wsdl:operation name="createAccount">
       <soap:operation soapAction="http://tempuri.org/IService1/createAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewAllCourses">
+      <soap:operation soapAction="http://tempuri.org/IService1/viewAllCourses" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

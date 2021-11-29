@@ -10,4 +10,7 @@
     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Register a Course" Width="165px" />
     <br />
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="View My Courses" />
+    <br />
+    <br />
+    <asp:Button ID="Button2" runat="server" Text="Log Out" />
 </asp:Content>

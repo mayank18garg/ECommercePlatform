@@ -12,11 +12,11 @@ namespace FinalProject.Member
         protected void Page_Load(object sender, EventArgs e)
         {
             FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
-            string[] response = client.viewMyCourses(Session["username"].ToString());
+            string[] response = client.viewMyCourses(Session["username"].ToString()); //calling the service to fetch all registered by students
 
-            foreach(var i in response)
+            foreach(var subs in response)
             {
-                Label1.Text += (i + "    ");
+                Label1.Text += (subs + "    "); //displaying all the course codes
             }
 
         }

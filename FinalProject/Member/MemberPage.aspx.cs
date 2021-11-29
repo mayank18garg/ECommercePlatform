@@ -12,7 +12,7 @@ namespace FinalProject.Member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "Hello, " + Session["username"] ;
+            Label1.Text = "Hello, " + Session["username"] ;  //fetching username from session data
             FinalProject.ServiceReference2.ServiceClient client = new FinalProject.ServiceReference2.ServiceClient();
             string mystr = client.GetVerifierString("5");
             Stream img = client.GetImage(mystr);
@@ -22,7 +22,7 @@ namespace FinalProject.Member
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("ViewCourses.aspx");
+            Response.Redirect("ViewMyCourses.aspx"); //redirecting to vi
         }
     }
 }

@@ -114,20 +114,20 @@ namespace service1
             Boolean exists = false;
             string created = "";
 
-            string path = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
+            string path = HttpRuntime.AppDomainAppPath + "\\courses_list.json";  // File path to courses list 
 
-            string jsonData = File.ReadAllText(path);
+            string jsonData = File.ReadAllText(path);  // reads in the JSON file into a string
 
-            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
+            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData); //Object of courses
 
             if (courseObj.courses != null)
             {
-                coursesList = courseObj.courses.ToList<Course>();
+                coursesList = courseObj.courses.ToList<Course>(); //adding to a list of courses
                 foreach (Course course in coursesList)
                 {
                     if (course.Code == Code)
                     {
-                        exists = true;
+                        exists = true; //if code already exists, return 
                         return "exist";
                     }
                 }
@@ -137,13 +137,13 @@ namespace service1
             {
                 newCourse.Code = Code; newCourse.Name = Name; newCourse.seats = seats;
                 newCourse.CourseStudents = new List<string>();
-                coursesList.Add(newCourse);
+                coursesList.Add(newCourse); //added the course to list
 
                 courseObj.courses = coursesList.ToArray<Course>();
                 json = JsonConvert.SerializeObject(courseObj, Formatting.Indented);
-                File.WriteAllText(path, json);
+                File.WriteAllText(path, json); //saving the updated list
 
-                created = "created";
+                created = "created"; //send success message
             }
             return created;
         }
@@ -167,6 +167,7 @@ namespace service1
             //user
             string jsonData = File.ReadAllText(path);
             string json;
+            Boolean courseFound= false;
 
             courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
             coursesList = courseObj.courses.ToList<Course>();
@@ -174,6 +175,7 @@ namespace service1
             {
                 if (course.Code == courseCode)
                 {
+                    courseFound = true;
                     course.seats = course.seats - 1;
                     course.CourseStudents.Add(userName);
                     courseObj.courses = coursesList.ToArray<Course>();
@@ -185,9 +187,17 @@ namespace service1
                     {
                         itemToAdd.StudentCourses.Add(course.Code);
                     }
+                    else
+                    {
+                        return "Student not found";
+                    }
 
                 }
 
+            }
+            if(courseFound == false)
+            {
+                return "Course Not Found.";
             }
             usersObj.users = usersList.ToArray<User>(); // Converts the list to a User object array
             json = JsonConvert.SerializeObject(usersObj, Formatting.Indented); // Converts object to JSON string
@@ -204,19 +214,19 @@ namespace service1
             string json;
             Boolean exists = false;
 
-            string coursesPath = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
-            string usersPath = HttpRuntime.AppDomainAppPath + "\\users_list.json";
+            string coursesPath = HttpRuntime.AppDomainAppPath + "\\courses_list.json"; //file path to courses 
+            string usersPath = HttpRuntime.AppDomainAppPath + "\\users_list.json"; //file path to user credentials
 
             string jsonData = File.ReadAllText(coursesPath);
 
-            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData);
+            courseObj = JsonConvert.DeserializeObject<CourseRootObject>(jsonData); //transfer data to object
 
             if (courseObj.courses != null)
             {
                 coursesList = courseObj.courses.ToList<Course>();
                 foreach (Course course in coursesList)
                 {
-                    if (course.Code == Code)
+                    if (course.Code == Code) //checking if course exists in the list
                     {
                         exists = true;
                     }
@@ -228,7 +238,7 @@ namespace service1
                 var itemToRemove = coursesList.SingleOrDefault(r => r.Code == Code);
                 if (itemToRemove != null)
                 {
-
+                    //if the course exists, from all the users registered subjects, remove that subject
                     List<User> usersList = new List<User>();
                     UsersRootObject usersObj = new UsersRootObject(); // Object of user
 
@@ -238,16 +248,16 @@ namespace service1
                     usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData);
 
                     usersList = usersObj.users.ToList<User>();
-                    foreach (var i in itemToRemove.CourseStudents)
+                    foreach (var i in itemToRemove.CourseStudents) //list of students who have registered the course
                     {
-                        foreach (User user in usersList)
+                        foreach (User user in usersList) //iterating through the list of students to find the students
                         {
-                            if (user.StudentName == i)
+                            if (user.StudentName == i) 
                             {
-                                int index = user.StudentCourses.IndexOf(Code);
+                                int index = user.StudentCourses.IndexOf(Code); //check index of subject code and deleting it
                                 if (index != -1)
                                 {
-                                    user.StudentCourses.RemoveAt(index);
+                                    user.StudentCourses.RemoveAt(index); //remove the sub
                                 }
                                 break;
                             }
@@ -257,7 +267,8 @@ namespace service1
                     jsonUser = JsonConvert.SerializeObject(usersObj, Formatting.Indented); // Converts object to JSON string
                     File.WriteAllText(usersPath, jsonUser); // Writes JSON data to the file
 
-                    coursesList.Remove(itemToRemove);
+                    coursesList.Remove(itemToRemove); //removing the subject
+
                     courseObj.courses = coursesList.ToArray<Course>(); // Converts the list to a User object array
                     json = JsonConvert.SerializeObject(courseObj, Formatting.Indented); // Converts object to JSON string
                     File.WriteAllText(coursesPath, json); // Writes JSON data to the file
@@ -273,25 +284,24 @@ namespace service1
             List<User> usersList = new List<User>();
             UsersRootObject usersObj = new UsersRootObject(); // Object of user
             string jsonUserData = File.ReadAllText(usersPath);
-            //string jsonUser;
 
             List<string> courses = new List<string>();
 
-            usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData);
-            usersList = usersObj.users.ToList<User>();
+            usersObj = JsonConvert.DeserializeObject<UsersRootObject>(jsonUserData); //object of all users
+            usersList = usersObj.users.ToList<User>(); //putting users in a list
 
             foreach (User user in usersList)
             {
-                if (user.StudentName == username)
+                if (user.StudentName == username) //searching for unique username
                 {
                     foreach(string course in user.StudentCourses)
                     {
-                        courses.Add(course);
+                        courses.Add(course); //add course code for that student
                     }
                     return courses;
                 }
             }
-            return null;
+            return null; //if student is not found, return null
         }
 
         public List<string> viewAllCourses(string username)
@@ -299,8 +309,7 @@ namespace service1
             string usersPath = HttpRuntime.AppDomainAppPath + "\\courses_list.json";
             CourseRootObject courseObj = new CourseRootObject();
             List<Course> coursesList = new List<Course>();
-            string jsonCourseData = File.ReadAllText(usersPath);
-            //string jsonUser;
+            string jsonCourseData = File.ReadAllText(usersPath); //putting data in object
 
             List<string> courses = new List<string>();
 
@@ -308,14 +317,14 @@ namespace service1
 
             if (courseObj.courses != null)
             {
-                coursesList = courseObj.courses.ToList<Course>();
+                coursesList = courseObj.courses.ToList<Course>(); 
                 foreach (Course course in coursesList)
                 {
-                    courses.Add(course.Code);
+                    courses.Add(course.Code); //add courses to the list
                 }
                 return courses;
             }
-            return null;
+            return null; //if no courses present, return null
         }
 
         public string createAccount(string StudentName, string password)
@@ -368,6 +377,7 @@ namespace service1
             return "success";
         }
 
+        //User Class Objects
         public class Course
         {
             public string Code { get; set; }

@@ -18,7 +18,6 @@ namespace FinalProject.Member
             {
                 ListBox1.Items.Add(i);
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)

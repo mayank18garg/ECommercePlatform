@@ -15,4 +15,7 @@
 
 <asp:Label ID="AccessRequest" runat="server" Text="Label"></asp:Label>
 <asp:Label ID="LabelStartTime" runat="server" Text="Label"></asp:Label>
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="TryIt page for Tanmay's services" />
 </asp:Content>

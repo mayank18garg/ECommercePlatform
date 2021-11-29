@@ -16,12 +16,22 @@ namespace FinalProject.Staff
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AddCourse.aspx");
+            Response.Redirect("AddCourse.aspx"); //redirects to add course page
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DeleteCourse.aspx");
+            Response.Redirect("DeleteCourse.aspx"); //redirects to delete course page
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            HttpCookie mycookies = new HttpCookie("StaffCookieId");
+            mycookies.Expires = DateTime.Now.AddMonths(-6);
+            Response.Cookies.Add(mycookies); //deleting cookies
+            Session["username"] = null; //resetting session data
+            Session["role"] = null;
+            Response.Redirect("StaffLogin.aspx"); // Redirects to login page.
         }
     }
 }

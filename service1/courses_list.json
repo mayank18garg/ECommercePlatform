@@ -29,10 +29,14 @@
       "CourseStudents": []
     },
     {
-      "Code": "CSE 542",
-      "Name": "dbmsi",
-      "seats": 60,
-      "CourseStudents": []
+      "Code": "CSE 240",
+      "Name": "DSA",
+      "seats": 44,
+      "CourseStudents": [
+        "Tanmay",
+        "dsajkds",
+        "May"
+      ]
     }
   ]
 }

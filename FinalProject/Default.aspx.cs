@@ -58,5 +58,10 @@ namespace FinalProject
             }
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TryIt_Tanmay/TryIt.aspx");
+        }
     }
 }

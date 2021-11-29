@@ -20,6 +20,6 @@
     <p>
         &nbsp;</p>
     <p>
-        <asp:Button ID="Button2" runat="server" Text="Log Out" />
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Log Out" />
     </p>
 </asp:Content>

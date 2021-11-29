@@ -4,7 +4,8 @@
       "StudentName": "Tanmay",
       "Password": "97100109105110",
       "StudentCourses": [
-        "CSE 445"
+        "CSE 445",
+        "CSE 240"
       ]
     },
     {
@@ -17,7 +18,8 @@
       "Password": "jj",
       "StudentCourses": [
         "CSE 498",
-        "CSE 598"
+        "CSE 598",
+        "CSE 240"
       ]
     },
     {

@@ -13,9 +13,9 @@ namespace FinalProject.Member
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "Hello, " + Session["username"] ;  //fetching username from session data
-            FinalProject.ServiceReference2.ServiceClient client = new FinalProject.ServiceReference2.ServiceClient();
-            string mystr = client.GetVerifierString("5");
-            Stream img = client.GetImage(mystr);
+            FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
+            //string mystr = client.GetVerifierString("5");
+            //Stream img = client.GetImage(mystr);
 
         }
 
@@ -23,6 +23,21 @@ namespace FinalProject.Member
         protected void Button1_Click1(object sender, EventArgs e)
         {
             Response.Redirect("ViewMyCourses.aspx"); //redirecting to vi
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            HttpCookie mycookies = new HttpCookie("MemberCookieId");
+            mycookies.Expires = DateTime.Now.AddMonths(-6);
+            Response.Cookies.Add(mycookies); //deleting cookies
+            Session["username"] = null;
+            Session["role"] = null; //resetting session data
+            Response.Redirect("MemberLogin.aspx"); // Change the internal value to login page.  
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("viewAvailableCourses.aspx"); //redirecting to vi
         }
     }
 }

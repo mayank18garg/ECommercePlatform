@@ -6,4 +6,9 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add a Course" />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete a Course" />
     </p>
+    <p> 
+        &nbsp;</p>
+    <p> 
+        <asp:Button ID="Button3" runat="server" Text="Log Out" />
+    </p>
 </asp:Content>

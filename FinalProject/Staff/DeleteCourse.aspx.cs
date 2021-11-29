@@ -17,9 +17,14 @@ namespace FinalProject.Staff
         protected void Button1_Click(object sender, EventArgs e)
         {
             FinalProject.ServiceReference1.Service1Client client = new FinalProject.ServiceReference1.Service1Client();
-            string courseCode = TextBox1.Text.ToUpper();
+            string courseCode = TextBox1.Text.ToUpper(); //converting all lowercase variable to uppercase(eg. cse to CSE)
+            if(courseCode.Length == 0)
+            {
+                Label1.Text = "Please provide a valid input."; //validating input
+                return;
+            }
             string response = client.deleteCourse(courseCode);
-            Label1.Text = response;
+            Label1.Text = response; //posting response from the service to be viewed by user.
         }
     }
 }

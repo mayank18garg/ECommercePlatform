@@ -17,4 +17,9 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add Course to Database" />
 &nbsp;<asp:Label ID="Label1" runat="server"></asp:Label>
     </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        <asp:Button ID="Button2" runat="server" Text="Log Out" />
+    </p>
 </asp:Content>

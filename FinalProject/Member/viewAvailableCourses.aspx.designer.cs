@@ -11,7 +11,7 @@ namespace FinalProject.Member
 {
 
 
-    public partial class MemberPage
+    public partial class viewAvailableCourses
     {
 
         /// <summary>
@@ -24,22 +24,13 @@ namespace FinalProject.Member
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Image1 control.
+        /// ListBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.ListBox ListBox1;
 
         /// <summary>
         /// Button1 control.

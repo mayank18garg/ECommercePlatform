@@ -311,7 +311,7 @@ namespace service1
                 coursesList = courseObj.courses.ToList<Course>();
                 foreach (Course course in coursesList)
                 {
-                    courses.Add(course.Name);
+                    courses.Add(course.Code);
                 }
                 return courses;
             }
